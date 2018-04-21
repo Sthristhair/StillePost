@@ -88,5 +88,27 @@ public class Gitter {
 		return hoehe;
 	}
 	
-
+    /**
+     * Verteilt die Menschen anhand ihrer X-Y-Koordinaten auf dem Spielfeld.
+     * @param menschen die zu verteiltenden Menschen.
+     * @param gitter das zugehoerige Spielfeld auf dem verteilt werden soll.
+     */
+    private void personenSetzen(ArrayList<Mensch> menschen, Feld[][] gitter) {
+        for (Mensch tmp : personen) {
+            int pX = tmp.getX();
+            int pY = tmp.getX();
+            gitter[pX][pY].getPersonen().add(tmp);
+        }
+    }
+    
+    
+    /**
+     * Bewegt die Menschen auf dem Spielfeld nach Zufall
+     * @param personen die zu bewegenden Menschen.
+     */
+    private void personenBewegen(ArrayList<Mensch> personen) {
+        for (Mensch tmp : personen) {
+   
+        }
+    }
 }
