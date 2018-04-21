@@ -48,13 +48,18 @@ public class Gitter {
 			//Rundenabläufe
 			personenSetzen(this.personen, this.gitter);
 			personenBewegen(this.personen);
+			
 			//Berechnung der Werte
+			double prozent0 = prozentwertBerechnen(0);
+			double prozent1 = prozentwertBerechnen(1);
+			double prozent2 = prozentwertBerechnen(2);
 			
 			
 			//Erzeugen der Runde
-			Runde tmp = new Runde(i,1,1,1);
+			Runde tmp = new Runde(i,prozent0,prozent1,prozent2);
 			runden.add(tmp);
 		}
+		beenden(runden);
 	}
 	
 	
@@ -79,7 +84,16 @@ public class Gitter {
         }
         return nachbarn;
     }
-	
+	/**
+	 * Auswertung der Runden am Ende der Simulation
+	 * @param runden ArrayList mit Runden
+	 */
+    public void beenden(ArrayList<Runde> runden) {
+    	System.out.println("Das Spiel ist beendet, hier die Auswertung:");
+    	for (int i = 0; i < runden.size(); i++) {
+			System.out.println(runden.get(i).toString());
+		}
+    }
     /**
      * generiert eine zufällige Zahl, die die Bewegungsrichtung eines Menschen steuert
      * @return Zufallszahl zwischen 1 und 5
@@ -105,7 +119,7 @@ public class Gitter {
 				tmp++;
 			}
 		}
-    	double wert = tmp / personen.size();
+    	double wert = (double) tmp / personen.size();
     	return wert;
     }
     

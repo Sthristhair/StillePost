@@ -15,8 +15,7 @@ public class Runde {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return rundenzahl + ". Runde: " + prozentMeinung0 + "% sind unentschlossen, " + prozentMeinung1 + "% glauben an die heirat, " + prozentMeinung2 + "% glauben nicht an die Heirat.";
 	}
 	
 }
