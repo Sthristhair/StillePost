@@ -31,7 +31,7 @@ public class Gitter {
 		this.personen = new ArrayList<>();
 		
 		Random rand = new Random();
-		for (int i = 0; i < anzahlPersonen; i++) {
+		for (int i = 0; i < anzahlPersonen-2; i++) {
 			int x = rand.nextInt(breite);
 			int y = rand.nextInt(hoehe);
 			this.personen.add(new Mensch(x,y));
@@ -41,19 +41,23 @@ public class Gitter {
 		this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
 	}
 	
-	public void spielablauf() {
+	public ArrayList<Runde> spielablauf() {
 		
 		ArrayList<Runde> runden = new ArrayList<Runde>();
 		for (int i = 1; i <= anzahlRunden; i++) {
 			//Rundenabläufe
 			personenSetzen(personen, gitter);
-			//Berechnung der Werte
 			
+			//Berechnung der Werte
+			double prozent0 = prozentwertBerechnen(0);
+			double prozent1 = prozentwertBerechnen(1);
+			double prozent2 = prozentwertBerechnen(2);
 			
 			//Erzeugen der Runde
-			Runde tmp = new Runde(i,1,1,1);
+			Runde tmp = new Runde(i,prozent0,prozent1,prozent2);
 			runden.add(tmp);
 		}
+		return runden;
 	}
 	
 	
@@ -101,12 +105,13 @@ public class Gitter {
     	int tmp = 0;
     	for (int i = 0; i < personen.size(); i++) {
 			if (personen.get(i).getMeinung()==meinung) {
-				tmp++;
+				tmp = tmp+1;
 			}
 		}
-    	double wert = tmp / personen.size();
+    	double wert = (double) tmp / personen.size();
     	return wert;
     }
+    
 	public int getWidth() {
 		return breite;
 	}
@@ -124,7 +129,7 @@ public class Gitter {
         for (Mensch tmp : personen) {
             int pX = tmp.getX();
             int pY = tmp.getX();
-            gitter[pX][pY].getPersonen().add(tmp);
+           // gitter[pX][pY].getPersonen().add(tmp);
         }
     }
     
