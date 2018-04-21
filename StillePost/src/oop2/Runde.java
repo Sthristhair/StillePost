@@ -13,7 +13,11 @@ public class Runde {
 		this.prozentMeinung1 = prozenzMeinung1;
 		this.prozentMeinung2 = prozentMeinung2;	
 	}
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
 	
 }
 

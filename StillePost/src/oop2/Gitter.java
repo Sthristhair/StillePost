@@ -42,13 +42,13 @@ public class Gitter {
 	public void spielablauf() {
 		
 		ArrayList<Runde> runden = new ArrayList<Runde>();
-		for (int i = 1; i < anzahlRunden; i++) {
+		for (int i = 1; i <= anzahlRunden; i++) {
 			//Rundenabläufe
 			
 			//Berechnung der Werte
 			
 			//Erzeugen der Runde
-			Runde tmp = new Runde(1,1,1,1);
+			Runde tmp = new Runde(i,1,1,1);
 			runden.add(tmp);
 		}
 	}
