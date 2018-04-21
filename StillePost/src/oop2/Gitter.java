@@ -44,7 +44,7 @@ public class Gitter {
 		ArrayList<Runde> runden = new ArrayList<Runde>();
 		for (int i = 1; i < anzahlRunden; i++) {
 			//Rundenabläufe
-			
+			personenSetzen(personen, gitter);
 			//Berechnung der Werte
 			
 			//Erzeugen der Runde
