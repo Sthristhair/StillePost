@@ -33,6 +33,13 @@ public class Mensch {
         return meinung;
     }
     
+    public void setMeinung(int meinung) {
+   
+            this.meinung = meinung;
+            //return meinung;
+    }
+ 
+    
     public int getX() {
         return x;
     }

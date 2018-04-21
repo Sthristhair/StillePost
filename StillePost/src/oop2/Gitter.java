@@ -47,6 +47,7 @@ public class Gitter {
 		for (int i = 1; i <= anzahlRunden; i++) {
 			//Rundenabläufe
 			personenSetzen(this.personen, this.gitter);
+			meinungChecken(this.gitter);
 			personenBewegen(this.personen);
 			
 			//Berechnung der Werte
@@ -154,6 +155,16 @@ public class Gitter {
         	if(inGitter(tmp.getX(),tmp.getY())) {
         		tmp.move(zufaelligeBewegung());
         	}
+        }
+    }
+    
+    private void meinungChecken(Feld[][] gitter) {
+        for (Feld[] feldX : gitter) {
+            for (Feld feldY : feldX) {
+                if (!feldY.getPersonen().isEmpty()) {
+                    feldY.checkMeinung();
+                }
+            }
         }
     }
 }
