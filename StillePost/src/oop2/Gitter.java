@@ -8,21 +8,24 @@ public class Gitter {
 	//Attribute
 	private int breite;
 	private int hoehe;
+	private int anzahlRunden;
 
 	private Feld[][] gitter;
 	
 	private ArrayList<Mensch> personen;
 	
-	public Gitter(int breite, int hoehe, int anzahlPersonen){
+	public Gitter(int breite, int hoehe, int anzahlPersonen, int anzahlRunden){
 		this.breite = breite;
 		this.hoehe = hoehe;
+		this.anzahlRunden = anzahlRunden;
 		gitter = new Feld[breite][hoehe];
 		
 		for (int i = 0; i < breite; i++) {
 			for (int j = 0; j < hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
 			}
-		}
+		}	
+		
 		this.personen = new ArrayList<>();
 		
 		Random rand = new Random();
@@ -35,6 +38,21 @@ public class Gitter {
 		this.personen.add(new Mensch("Anton Angeber", 1, 0, 0));
 		this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
 	}
+	
+	public void spielablauf() {
+		
+		ArrayList<Runde> runden = new ArrayList<Runde>();
+		for (int i = 1; i < anzahlRunden; i++) {
+			//Rundenabläufe
+			
+			//Berechnung der Werte
+			
+			//Erzeugen der Runde
+			Runde tmp = new Runde(1,1,1,1);
+			runden.add(tmp);
+		}
+	}
+	
 	
     public ArrayList<Feld> getNachbarn(Feld start){
         ArrayList<Feld> nachbarn = new ArrayList<Feld>();
@@ -59,7 +77,6 @@ public class Gitter {
     }
 	
     public boolean inGitter(int x, int y){
-        
         return x < breite  && x >= 0 && y < hoehe  && y >= 0;
     }
 
