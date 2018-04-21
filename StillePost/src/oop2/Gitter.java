@@ -2,6 +2,7 @@ package oop2;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Gitter {
@@ -18,6 +19,7 @@ public class Gitter {
 		this.breite = breite;
 		this.hoehe = hoehe;
 		this.anzahlRunden = anzahlRunden;
+		
 		gitter = new Feld[breite][hoehe];
 		
 		for (int i = 0; i < breite; i++) {
@@ -46,6 +48,7 @@ public class Gitter {
 			//Rundenabläufe
 			
 			//Berechnung der Werte
+			
 			
 			//Erzeugen der Runde
 			Runde tmp = new Runde(i,1,1,1);
@@ -76,10 +79,34 @@ public class Gitter {
         return nachbarn;
     }
 	
+    /**
+     * generiert eine zufällige Zahl, die die Bewegungsrichtung eines Menschen steuert
+     * @return Zufallszahl zwischen 1 und 5
+     */
+    public int zufaelligeBewegung(){
+    	int randomNum = ThreadLocalRandom.current().nextInt(1,6);
+    	return randomNum;
+    }
+    
     public boolean inGitter(int x, int y){
         return x < breite  && x >= 0 && y < hoehe  && y >= 0;
     }
 
+    /**
+     * Methode, die den Prozentwert an Menschen berechnet, die eine gewisse Meinung haben
+     * @param meinung für die der Prozenzwert berechnet werden soll
+     * @return prozentualer Anteil als double
+     */
+    public double prozentwertBerechnen(int meinung) {
+    	int tmp = 0;
+    	for (int i = 0; i < personen.size(); i++) {
+			if (personen.get(i).getMeinung()==meinung) {
+				tmp++;
+			}
+		}
+    	double wert = tmp / personen.size();
+    	return wert;
+    }
 	public int getWidth() {
 		return breite;
 	}
