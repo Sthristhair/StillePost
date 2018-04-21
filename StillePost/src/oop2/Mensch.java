@@ -54,13 +54,13 @@ public class Mensch {
      */
     public int move(int richtung) {
         if (richtung == 1) {
-            this.setXY(this.x, this.y + 1);
+            this.setXY(this.x, this.y - 1);
             return 1;
         } else if (richtung == 2) {
             this.setXY(this.x + 1, this.y);
             return 2;
         } else if (richtung == 3) {
-            this.setXY(this.x, this.y - 1);
+            this.setXY(this.x, this.y + 1);
             return 3;
         } else if (richtung == 4){
             this.setXY(this.x - 1, this.y);

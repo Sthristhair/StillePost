@@ -46,7 +46,8 @@ public class Gitter {
 		ArrayList<Runde> runden = new ArrayList<Runde>();
 		for (int i = 1; i <= anzahlRunden; i++) {
 			//Rundenabläufe
-			personenSetzen(personen, gitter);
+			personenSetzen(this.personen, this.gitter);
+			personenBewegen(this.personen);
 			//Berechnung der Werte
 			
 			
@@ -107,6 +108,7 @@ public class Gitter {
     	double wert = tmp / personen.size();
     	return wert;
     }
+    
 	public int getWidth() {
 		return breite;
 	}
@@ -135,7 +137,9 @@ public class Gitter {
      */
     private void personenBewegen(ArrayList<Mensch> personen) {
         for (Mensch tmp : personen) {
-   
+        	if(inGitter(tmp.getX(),tmp.getY())) {
+        		tmp.move(zufaelligeBewegung());
+        	}
         }
     }
 }
