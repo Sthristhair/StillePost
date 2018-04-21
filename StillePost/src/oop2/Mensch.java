@@ -28,4 +28,48 @@ public class Mensch {
 		this.x = x;
 		this.y = y;
 	}
+	
+    public int getMeinung() {
+        return meinung;
+    }
+    
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
+    }
+    
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
+    
+    /**
+     * Bewegt den Spieler, indem seine Koordinaten verändert werden.
+     * @param richtung 1 hoch, 2 rechts, 3 unten, 4 links, 5 bleibt stehen
+     * @return
+     */
+    public int move(int richtung) {
+        if (richtung == 1) {
+            this.setXY(this.x, this.y + 1);
+            return 1;
+        } else if (richtung == 2) {
+            this.setXY(this.x + 1, this.y);
+            return 2;
+        } else if (richtung == 3) {
+            this.setXY(this.x, this.y - 1);
+            return 3;
+        } else if (richtung == 4){
+            this.setXY(this.x - 1, this.y);
+            return 4;
+        } else if (richtung == 5){
+            this.setXY(this.x, this.y);
+            return 5;
+        } else {
+            return 0;
+        }
+    }
 }
