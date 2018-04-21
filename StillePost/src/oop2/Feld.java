@@ -26,4 +26,40 @@ public class Feld {
         return personen;
     }
     
+    public int checkMeinung() {
+        int count1 = 0;
+        int count2 = 0;
+        
+        for(Mensch m : personen) {
+        	if(m.getMeinung()==1) {
+        		count1++;
+        		
+        	} else if (m.getMeinung() == 2) {
+        		count2++;
+        	}
+        }
+
+
+        if (count1 > count2) {
+            for (Mensch m : personen) {
+                m.setMeinung(1);
+            }
+            
+            return 1;
+            
+        } else if (count1 < count2) {
+            for (Mensch m : personen) {
+                m.setMeinung(2);
+            }
+            
+            return 2;
+            
+        } else {
+            for (Mensch m : personen) {
+                m.setMeinung(0);
+            }
+            
+            return 0;
+        }
+    }
 }
