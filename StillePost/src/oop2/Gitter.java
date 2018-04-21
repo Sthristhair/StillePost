@@ -41,7 +41,7 @@ public class Gitter {
 		this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
 	}
 	
-	public ArrayList<Runde> spielablauf() {
+	public void spielablauf() {
 		
 		ArrayList<Runde> runden = new ArrayList<Runde>();
 		for (int i = 1; i <= anzahlRunden; i++) {
@@ -57,7 +57,7 @@ public class Gitter {
 			Runde tmp = new Runde(i,prozent0,prozent1,prozent2);
 			runden.add(tmp);
 		}
-		return runden;
+		beenden(runden);
 	}
 	
 	
@@ -82,7 +82,16 @@ public class Gitter {
         }
         return nachbarn;
     }
-	
+	/**
+	 * Auswertung der Runden am Ende der Simulation
+	 * @param runden ArrayList mit Runden
+	 */
+    public void beenden(ArrayList<Runde> runden) {
+    	System.out.println("Das Spiel ist beendet, hier die Auswertung:");
+    	for (int i = 0; i < runden.size(); i++) {
+			System.out.println(runden.get(i).toString());
+		}
+    }
     /**
      * generiert eine zufällige Zahl, die die Bewegungsrichtung eines Menschen steuert
      * @return Zufallszahl zwischen 1 und 5

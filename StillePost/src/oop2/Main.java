@@ -5,6 +5,6 @@ public class Main {
 		
 		Gitter gitter = new Gitter(5,5,100,10);
 		
-		System.out.println(gitter.spielablauf());
+		gitter.spielablauf();
 	}
 }
