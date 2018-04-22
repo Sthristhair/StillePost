@@ -27,11 +27,9 @@ public class Gitter {
 			
 			for (int j = 0; j < hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
-<<<<<<< HEAD
-				System.out.println("x");
-=======
+
 				//System.out.println(i+","+j);
->>>>>>> refs/heads/lala
+
 			}
 		}	
 		
