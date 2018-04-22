@@ -70,26 +70,19 @@ public class Gitter {
 	}
 	
 	
-    public ArrayList<Feld> getNachbarn(Feld start){
-        ArrayList<Feld> nachbarn = new ArrayList<Feld>();
-        // get start coordinates
-        int x = start.getX();
-        int y = start.getY();
-        
-        // if neighbor is in gitter then add to neighbor list
-        if(inGitter(x-1, y)){
-            nachbarn.add(gitter[x-1][y]);
+    private boolean validMove(Person p, int richtung) {
+        if (p.getY() == hoehe-1 && richtung == 1) {
+            return false;
+        } else if (p.getX() == breite-1 && richtung == 2) {
+            return false;
+        } else if (p.getY() == 0 && richtung == 3) {
+            return false;
+        } else if (p.getX() == 0 && richtung == 4) {
+            return false;
+        } else {
+            return true;
         }
-        if(inGitter(x+1, y)){
-            nachbarn.add(gitter[x+1][y]);
-        }
-        if(inGitter(x, y+1)){
-            nachbarn.add(gitter[x][y+1]);
-        }
-        if(inGitter(x, y-1)){
-            nachbarn.add(gitter[x][y-1]);
-        }
-        return nachbarn;
+
     }
 	/**
 	 * Auswertung der Runden am Ende der Simulation
