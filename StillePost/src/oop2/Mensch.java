@@ -59,17 +59,17 @@ public class Mensch {
      * @param richtung 1 hoch, 2 rechts, 3 unten, 4 links, 5 bleibt stehen
      * @return
      */
-    public int move(int richtung) {
-        if (richtung == 1) {
+    public int move(int richtung, Feld[][] feld) {
+        if (richtung == 1 && feld[this.x][this.y].inGitter(this.x, this.y-1)) {
             this.setXY(this.x, this.y - 1);
             return 1;
-        } else if (richtung == 2) {
+        } else if (richtung == 2 && feld[this.x][this.y].inGitter(this.x+1, this.y)) {
             this.setXY(this.x + 1, this.y);
             return 2;
-        } else if (richtung == 3) {
+        } else if (richtung == 3 && feld[this.x][this.y].inGitter(this.x, this.y+1)) {
             this.setXY(this.x, this.y + 1);
             return 3;
-        } else if (richtung == 4){
+        } else if (richtung == 4 && feld[this.x][this.y].inGitter(this.x-1, this.y)){
             this.setXY(this.x - 1, this.y);
             return 4;
         } else if (richtung == 5){

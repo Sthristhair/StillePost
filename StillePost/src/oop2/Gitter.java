@@ -71,6 +71,7 @@ public class Gitter {
 	
 	
 
+  
 	/**
 	 * Auswertung der Runden am Ende der Simulation
 	 * @param runden ArrayList mit Runden
@@ -90,9 +91,7 @@ public class Gitter {
     	return randomNum;
     }
     
-    public boolean inGitter(int x, int y){
-        return x < breite  && x >= 0 && y < hoehe  && y >= 0;
-    }
+ 
 
     /**
      * Methode, die den Prozentwert an Menschen berechnet, die eine gewisse Meinung haben
@@ -145,9 +144,7 @@ public class Gitter {
      */
     private void personenBewegen(ArrayList<Mensch> personen) {
         for (Mensch tmp : personen) {
-        	if(inGitter(tmp.getX(),tmp.getY())) {
-        		tmp.move(zufaelligeBewegung());
-        	}
+          		tmp.move(zufaelligeBewegung(), this.gitter);
         }
     }
     
