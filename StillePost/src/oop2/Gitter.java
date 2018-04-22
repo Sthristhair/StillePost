@@ -26,6 +26,7 @@ public class Gitter {
 			
 			for (int j = 0; j < hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
+				//System.out.println(i+","+j);
 			}
 		}	
 		
@@ -61,7 +62,7 @@ public class Gitter {
 			Runde tmp = new Runde(i,prozent0,prozent1,prozent2);
 			runden.add(tmp);
 			
-			//personenBewegen(this.personen);
+			personenBewegen(this.personen);
 			clearFelder(this.gitter);
 			System.out.println(i + ". Runde beendet!");
 		}
@@ -147,7 +148,7 @@ public class Gitter {
             int pX = tmp.getX();
             int pY = tmp.getY();
             spielfeld[pX][pY].getPersonen().add(tmp);
-            System.out.println(spielfeld[pX][pY].getPersonen().size());
+            //System.out.println(spielfeld[pX][pY].getPersonen().size());
         }
     }
     
