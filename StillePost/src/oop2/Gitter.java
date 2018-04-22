@@ -61,7 +61,7 @@ public class Gitter {
 			Runde tmp = new Runde(i,prozent0,prozent1,prozent2);
 			runden.add(tmp);
 			
-			//personenBewegen(this.personen);
+			personenBewegen(this.personen);
 			clearFelder(this.gitter);
 			System.out.println(i + ". Runde beendet!");
 		}
@@ -69,27 +69,7 @@ public class Gitter {
 	}
 	
 	
-    public ArrayList<Feld> getNachbarn(Feld start){
-        ArrayList<Feld> nachbarn = new ArrayList<Feld>();
-        // get start coordinates
-        int x = start.getX();
-        int y = start.getY();
-        
-        // if neighbor is in gitter then add to neighbor list
-        if(inGitter(x-1, y)){
-            nachbarn.add(gitter[x-1][y]);
-        }
-        if(inGitter(x+1, y)){
-            nachbarn.add(gitter[x+1][y]);
-        }
-        if(inGitter(x, y+1)){
-            nachbarn.add(gitter[x][y+1]);
-        }
-        if(inGitter(x, y-1)){
-            nachbarn.add(gitter[x][y-1]);
-        }
-        return nachbarn;
-    }
+  
 	/**
 	 * Auswertung der Runden am Ende der Simulation
 	 * @param runden ArrayList mit Runden
@@ -109,9 +89,7 @@ public class Gitter {
     	return randomNum;
     }
     
-    public boolean inGitter(int x, int y){
-        return x < breite  && x >= 0 && y < hoehe  && y >= 0;
-    }
+ 
 
     /**
      * Methode, die den Prozentwert an Menschen berechnet, die eine gewisse Meinung haben
@@ -164,9 +142,7 @@ public class Gitter {
      */
     private void personenBewegen(ArrayList<Mensch> personen) {
         for (Mensch tmp : personen) {
-        	if(inGitter(tmp.getX(),tmp.getY())) {
-        		tmp.move(zufaelligeBewegung());
-        	}
+          		tmp.move(zufaelligeBewegung(), this.gitter);
         }
     }
     

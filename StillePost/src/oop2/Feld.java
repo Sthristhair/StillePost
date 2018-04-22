@@ -13,6 +13,9 @@ public class Feld {
 		this.personen = new ArrayList<>();
 	}
 	
+	   public boolean inGitter(int breite, int hoehe){
+	        return this.x < breite  && this.x >= 0 && this.y < hoehe  && this.y >= 0;
+	    }
 	
     public int getX(){
         return x;
