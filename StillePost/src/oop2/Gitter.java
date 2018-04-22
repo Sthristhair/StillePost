@@ -70,20 +70,7 @@ public class Gitter {
 	}
 	
 	
-    private boolean validMove(Person p, int richtung) {
-        if (p.getY() == hoehe-1 && richtung == 1) {
-            return false;
-        } else if (p.getX() == breite-1 && richtung == 2) {
-            return false;
-        } else if (p.getY() == 0 && richtung == 3) {
-            return false;
-        } else if (p.getX() == 0 && richtung == 4) {
-            return false;
-        } else {
-            return true;
-        }
 
-    }
 	/**
 	 * Auswertung der Runden am Ende der Simulation
 	 * @param runden ArrayList mit Runden
