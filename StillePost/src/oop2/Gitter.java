@@ -37,8 +37,8 @@ public class Gitter {
 			this.personen.add(new Mensch(x,y));
 		}
 		
-		this.personen.add(new Mensch("Anton Angeber", 1, 0, 0));
-		this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
+	//	this.personen.add(new Mensch("Anton Angeber", 1, 0, 0));
+		//this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
 	}
 	
 	public void spielablauf() {
@@ -48,7 +48,7 @@ public class Gitter {
 			//Rundenabläufe
 			personenSetzen(this.personen, this.gitter);
 			meinungChecken(this.gitter);
-			personenBewegen(this.personen);
+			
 			
 			//Berechnung der Werte
 			double prozent0 = prozentwertBerechnen(0);
@@ -59,6 +59,10 @@ public class Gitter {
 			//Erzeugen der Runde
 			Runde tmp = new Runde(i,prozent0,prozent1,prozent2);
 			runden.add(tmp);
+			
+			personenBewegen(this.personen);
+			clearFelder(this.gitter);
+			System.out.println(i + ". Runde beendet!");
 		}
 		beenden(runden);
 	}
@@ -135,17 +139,24 @@ public class Gitter {
     /**
      * Verteilt die Menschen anhand ihrer X-Y-Koordinaten auf dem Spielfeld.
      * @param menschen die zu verteiltenden Menschen.
-     * @param gitter das zugehoerige Spielfeld auf dem verteilt werden soll.
+     * @param gitter das zugehörige Spielfeld auf dem verteilt werden soll.
      */
-    private void personenSetzen(ArrayList<Mensch> menschen, Feld[][] gitter) {
-        for (Mensch tmp : personen) {
+    private void personenSetzen(ArrayList<Mensch> menschen, Feld[][] spielfeld) {
+        for (Mensch tmp : menschen) {
+        	System.out.println(menschen.size());
             int pX = tmp.getX();
-            int pY = tmp.getX();
-            gitter[pX][pY].getPersonen().add(tmp);
+            int pY = tmp.getY();
+            spielfeld[pX][pY].getPersonen().add(tmp);
         }
     }
     
-    
+    private void clearFelder(Feld[][] feld) {
+        for (int i = 0; i < breite; i++) {
+            for (int j = 0; j < hoehe; j++) {
+                feld[i][j].getPersonen().clear();
+            }
+        }
+    }
     /**
      * Bewegt die Menschen auf dem Spielfeld nach Zufall
      * @param personen die zu bewegenden Menschen.
