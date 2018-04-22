@@ -23,6 +23,7 @@ public class Gitter {
 		gitter = new Feld[breite][hoehe];
 		
 		for (int i = 0; i < breite; i++) {
+			
 			for (int j = 0; j < hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
 			}
@@ -31,14 +32,14 @@ public class Gitter {
 		this.personen = new ArrayList<>();
 		
 		Random rand = new Random();
-		for (int i = 0; i < anzahlPersonen; i++) {
+		for (int i = 0; i < anzahlPersonen-2; i++) {
 			int x = rand.nextInt(breite);
 			int y = rand.nextInt(hoehe);
 			this.personen.add(new Mensch(x,y));
 		}
 		
 		this.personen.add(new Mensch("Anton Angeber", 1, 0, 0));
-		this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
+		this.personen.add(new Mensch("Berta Blümchen", 2, breite-1, hoehe-1));
 	}
 	
 	public void spielablauf() {
@@ -60,7 +61,7 @@ public class Gitter {
 			Runde tmp = new Runde(i,prozent0,prozent1,prozent2);
 			runden.add(tmp);
 			
-			personenBewegen(this.personen);
+			//personenBewegen(this.personen);
 			clearFelder(this.gitter);
 			System.out.println(i + ". Runde beendet!");
 		}
@@ -143,7 +144,6 @@ public class Gitter {
      */
     private void personenSetzen(ArrayList<Mensch> menschen, Feld[][] spielfeld) {
         for (Mensch tmp : menschen) {
-        	System.out.println(menschen.size());
             int pX = tmp.getX();
             int pY = tmp.getY();
             spielfeld[pX][pY].getPersonen().add(tmp);
