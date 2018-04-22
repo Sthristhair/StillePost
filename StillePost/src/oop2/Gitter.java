@@ -37,8 +37,8 @@ public class Gitter {
 			this.personen.add(new Mensch(x,y));
 		}
 		
-	//	this.personen.add(new Mensch("Anton Angeber", 1, 0, 0));
-		//this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
+		this.personen.add(new Mensch("Anton Angeber", 1, 0, 0));
+		this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
 	}
 	
 	public void spielablauf() {
@@ -147,6 +147,7 @@ public class Gitter {
             int pX = tmp.getX();
             int pY = tmp.getY();
             spielfeld[pX][pY].getPersonen().add(tmp);
+            System.out.println(spielfeld[pX][pY].getPersonen().size());
         }
     }
     

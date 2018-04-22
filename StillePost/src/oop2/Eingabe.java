@@ -15,6 +15,7 @@ public class Eingabe {
 		try {
 		System.out.println("Breite des Spielfeldes: ");
 		breite = scan.nextInt();
+		breite -= 2;
 		} 
 		catch(Exception e) {
     		scan = new Scanner (System.in);
@@ -26,6 +27,7 @@ public class Eingabe {
 		try {
         System.out.println("Höhe des Spielfeldes: ");
         hoehe = scan.nextInt();
+        hoehe -= 2;
 		}
 		catch(Exception e) {
     		scan = new Scanner (System.in);
@@ -38,6 +40,7 @@ public class Eingabe {
 		try {
         System.out.println("Anzahl der Spieler: ");
         personen = scan.nextInt();
+        personen -= 2;
 		}
 		catch(Exception e) {
     		scan = new Scanner (System.in);
