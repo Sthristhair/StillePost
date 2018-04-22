@@ -12,10 +12,7 @@ public class Feld {
 		this.y =y;
 		this.personen = new ArrayList<>();
 	}
-	
-	   public boolean inGitter(int breite, int hoehe){
-	        return this.x < breite  && this.x >= 0 && this.y < hoehe  && this.y >= 0;
-	    }
+
 	
     public int getX(){
         return x;
@@ -32,7 +29,7 @@ public class Feld {
     public void addPersonen(Mensch person) {
     	personen.add(person);
     }
-    public int checkMeinung() {
+    public void checkMeinung() {
         int count1 = 0;
         int count2 = 0;
         
@@ -50,22 +47,20 @@ public class Feld {
             for (Mensch m : personen) {
                 m.setMeinung(1);
             }
-            
-            return 1;
+
             
         } else if (count1 < count2) {
             for (Mensch m : personen) {
                 m.setMeinung(2);
             }
             
-            return 2;
+
             
         } else {
             for (Mensch m : personen) {
                 m.setMeinung(0);
             }
             
-            return 0;
         }
     }
 }

@@ -15,7 +15,7 @@ public class Runde {
 	}
 	@Override
 	public String toString() {
-		return rundenzahl + ". Runde: " + prozentMeinung0 + "% sind unentschlossen, " + prozentMeinung1 + "% glauben an die heirat, " + prozentMeinung2 + "% glauben nicht an die Heirat.";
+		return rundenzahl + ". Runde: " + prozentMeinung0*100 + "% sind unentschlossen, " + prozentMeinung1*100 + "% glauben an die heirat, " + prozentMeinung2*100 + "% glauben nicht an die Heirat.";
 	}
 	
 }

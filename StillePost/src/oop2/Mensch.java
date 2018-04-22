@@ -1,6 +1,5 @@
 package oop2;
 
-import java.util.Random;
 
 public class Mensch {
 	//Attribute
@@ -59,22 +58,27 @@ public class Mensch {
      * @param richtung 1 hoch, 2 rechts, 3 unten, 4 links, 5 bleibt stehen
      * @return
      */
-    public int move(int richtung, Feld[][] feld) {
-        if (richtung == 1 && feld[this.x][this.y].inGitter(this.x, this.y-1)) {
+    public int move(int richtung, int breite, int hoehe) {
+        if (richtung == 1 && this.y - 1 > 0) {
             this.setXY(this.x, this.y - 1);
             return 1;
-        } else if (richtung == 2 && feld[this.x][this.y].inGitter(this.x+1, this.y)) {
+            
+        } else if (richtung == 2 && this.x + 1 < breite) {
             this.setXY(this.x + 1, this.y);
             return 2;
-        } else if (richtung == 3 && feld[this.x][this.y].inGitter(this.x, this.y+1)) {
+            
+        } else if (richtung == 3 && this.y + 1 < hoehe) {
             this.setXY(this.x, this.y + 1);
             return 3;
-        } else if (richtung == 4 && feld[this.x][this.y].inGitter(this.x-1, this.y)){
+            
+        } else if (richtung == 4 && this.x - 1 > 0){
             this.setXY(this.x - 1, this.y);
             return 4;
+            
         } else if (richtung == 5){
             this.setXY(this.x, this.y);
             return 5;
+            
         } else {
             return 0;
         }

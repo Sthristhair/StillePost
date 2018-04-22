@@ -21,29 +21,24 @@ public class Gitter {
 		this.anzahlRunden = anzahlRunden;
 		
 		this.gitter = new Feld[this.breite][this.hoehe];
-		
 
 		for (int i = 0; i < breite; i++) {
-			
 			for (int j = 0; j < hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
-
-				//System.out.println(i+","+j);
-
 			}
 		}	
 		
 		this.personen = new ArrayList<>();
 		
 		Random rand = new Random();
-		for (int i = 0; i < anzahlPersonen; i++) {
+		for (int i = 0; i < anzahlPersonen-2; i++) {
 			int x = rand.nextInt(breite);
 			int y = rand.nextInt(hoehe);
 			this.personen.add(new Mensch(x,y));
 		}
 		
 		this.personen.add(new Mensch("Anton Angeber", 1, 0, 0));
-		this.personen.add(new Mensch("Berta Blümchen", 2, breite, hoehe));
+		this.personen.add(new Mensch("Berta Blümchen", 2, breite-1, hoehe-1));
 	}
 	
 	public void spielablauf() {
@@ -67,13 +62,9 @@ public class Gitter {
 			
 			personenBewegen(this.personen);
 			clearFelder(this.gitter);
-			System.out.println(i + ". Runde beendet!");
 		}
 		beenden(runden);
 	}
-	
-	
-
   
 	/**
 	 * Auswertung der Runden am Ende der Simulation
@@ -85,16 +76,6 @@ public class Gitter {
 			System.out.println(runden.get(i).toString());
 		}
     }
-    /**
-     * generiert eine zufällige Zahl, die die Bewegungsrichtung eines Menschen steuert
-     * @return Zufallszahl zwischen 1 und 5
-     */
-    public int zufaelligeBewegung(){
-    	int randomNum = ThreadLocalRandom.current().nextInt(1,6);
-    	return randomNum;
-    }
-    
- 
 
     /**
      * Methode, die den Prozentwert an Menschen berechnet, die eine gewisse Meinung haben
@@ -112,48 +93,6 @@ public class Gitter {
     	return wert;
     }
     
-	public int getWidth() {
-		return breite;
-	}
-
-	public int getHeight() {
-		return hoehe;
-	}
-	
-    /**
-     * Verteilt die Menschen anhand ihrer X-Y-Koordinaten auf dem Spielfeld.
-     * @param menschen die zu verteiltenden Menschen.
-     * @param gitter das zugehörige Spielfeld auf dem verteilt werden soll.
-     */
-    private void personenSetzen(ArrayList<Mensch> menschen, Feld[][] spielfeld) {
-        for (Mensch tmp : menschen) {
-        	System.out.println(menschen.size());
-            int pX = tmp.getX();
-            int pY = tmp.getY();
-
-            spielfeld[pX][pY].getPersonen().add(tmp);
-            //System.out.println(spielfeld[pX][pY].getPersonen().size());
-
-        }
-    }
-    
-    private void clearFelder(Feld[][] feld) {
-        for (int i = 0; i < breite; i++) {
-            for (int j = 0; j < hoehe; j++) {
-                feld[i][j].getPersonen().clear();
-            }
-        }
-    }
-    /**
-     * Bewegt die Menschen auf dem Spielfeld nach Zufall
-     * @param personen die zu bewegenden Menschen.
-     */
-    private void personenBewegen(ArrayList<Mensch> personen) {
-        for (Mensch tmp : personen) {
-          		tmp.move(zufaelligeBewegung(), this.gitter);
-        }
-    }
-    
     private void meinungChecken(Feld[][] gitter) {
         for (Feld[] feldX : gitter) {
             for (Feld feldY : feldX) {
@@ -163,4 +102,52 @@ public class Gitter {
             }
         }
     }
+	
+    private void clearFelder(Feld[][] feld) {
+        for (int i = 0; i < breite; i++) {
+            for (int j = 0; j < hoehe; j++) {
+                feld[i][j].getPersonen().clear();
+            }
+        }
+    }
+    
+    /**
+     * Verteilt die Menschen anhand ihrer X-Y-Koordinaten auf dem Spielfeld.
+     * @param menschen die zu verteiltenden Menschen.
+     * @param gitter das zugehörige Spielfeld auf dem verteilt werden soll.
+     */
+    private void personenSetzen(ArrayList<Mensch> menschen, Feld[][] spielfeld) {
+        for (Mensch tmp : menschen) {
+            int pX = tmp.getX();
+            int pY = tmp.getY();
+            spielfeld[pX][pY].getPersonen().add(tmp);
+        }
+    }
+    
+    /**
+     * Bewegt die Menschen auf dem Spielfeld nach Zufall
+     * @param personen die zu bewegenden Menschen.
+     */
+    private void personenBewegen(ArrayList<Mensch> personen) {
+        for (Mensch tmp : personen) {
+          		tmp.move(zufaelligeBewegung(), breite, hoehe);
+        }
+    }
+    
+    /**
+     * generiert eine zufällige Zahl, die die Bewegungsrichtung eines Menschen steuert
+     * @return Zufallszahl zwischen 1 und 5
+     */
+    public int zufaelligeBewegung(){
+    	int randomNum = ThreadLocalRandom.current().nextInt(1,6);
+    	return randomNum;
+    }
+    
+	public int getWidth() {
+		return breite;
+	}
+
+	public int getHeight() {
+		return hoehe;
+	}
 }

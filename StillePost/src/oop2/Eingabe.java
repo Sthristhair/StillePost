@@ -45,7 +45,7 @@ public class Eingabe {
 		}
 	}
 	
-	while(rundenanzahl < 1 || rundenanzahl >999) {
+	while(rundenanzahl < 1 || rundenanzahl >9999) {
 		try {
         System.out.println("Anzahl der Runden: ");
         rundenanzahl = scan.nextInt();
