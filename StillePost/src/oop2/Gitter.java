@@ -20,11 +20,12 @@ public class Gitter {
 		this.hoehe = hoehe;
 		this.anzahlRunden = anzahlRunden;
 		
-		gitter = new Feld[breite][hoehe];
+		this.gitter = new Feld[this.breite][this.hoehe];
 		
-		for (int i = 0; i < breite; i++) {
-			for (int j = 0; j < hoehe; j++) {
+		for (int i = 0; i < this.breite; i++) {
+			for (int j = 0; j < this.hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
+				System.out.println("x");
 			}
 		}	
 		
@@ -146,7 +147,7 @@ public class Gitter {
         	System.out.println(menschen.size());
             int pX = tmp.getX();
             int pY = tmp.getY();
-            spielfeld[pX][pY].getPersonen().add(tmp);
+            spielfeld[pX][pY].addPersonen(tmp);
             System.out.println(spielfeld[pX][pY].getPersonen().size());
         }
     }

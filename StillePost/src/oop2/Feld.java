@@ -26,6 +26,9 @@ public class Feld {
         return personen;
     }
     
+    public void addPersonen(Mensch person) {
+    	personen.add(person);
+    }
     public int checkMeinung() {
         int count1 = 0;
         int count2 = 0;
