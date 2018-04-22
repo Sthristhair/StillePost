@@ -9,7 +9,7 @@ public class Eingabe {
 	public Eingabe() {
 		
 	}
-	public void eingabe() {
+	public Gitter eingabe() {
 		
 	while(breite<1 || breite > 999){
 		try {
@@ -38,7 +38,6 @@ public class Eingabe {
 		try {
         System.out.println("Anzahl der Spieler: ");
         personen = scan.nextInt();
-        personen -= 2;
 		}
 		catch(Exception e) {
     		scan = new Scanner (System.in);
@@ -58,7 +57,6 @@ public class Eingabe {
 	}
 	
 	Gitter gitter = new Gitter(breite,hoehe, personen, rundenanzahl);
-	
-	gitter.spielablauf();
+	return gitter;
 	}
 }

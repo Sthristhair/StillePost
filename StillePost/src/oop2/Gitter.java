@@ -22,8 +22,10 @@ public class Gitter {
 		
 		this.gitter = new Feld[this.breite][this.hoehe];
 		
-		for (int i = 0; i < this.breite; i++) {
-			for (int j = 0; j < this.hoehe; j++) {
+
+		for (int i = 0; i < breite; i++) {
+			
+			for (int j = 0; j < hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
 				System.out.println("x");
 			}
