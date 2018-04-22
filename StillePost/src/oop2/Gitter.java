@@ -27,7 +27,11 @@ public class Gitter {
 			
 			for (int j = 0; j < hoehe; j++) {
 				gitter[i][j] = new Feld(i,j);
+<<<<<<< HEAD
 				System.out.println("x");
+=======
+				//System.out.println(i+","+j);
+>>>>>>> refs/heads/lala
 			}
 		}	
 		
@@ -71,27 +75,8 @@ public class Gitter {
 	}
 	
 	
-    public ArrayList<Feld> getNachbarn(Feld start){
-        ArrayList<Feld> nachbarn = new ArrayList<Feld>();
-        // get start coordinates
-        int x = start.getX();
-        int y = start.getY();
-        
-        // if neighbor is in gitter then add to neighbor list
-        if(inGitter(x-1, y)){
-            nachbarn.add(gitter[x-1][y]);
-        }
-        if(inGitter(x+1, y)){
-            nachbarn.add(gitter[x+1][y]);
-        }
-        if(inGitter(x, y+1)){
-            nachbarn.add(gitter[x][y+1]);
-        }
-        if(inGitter(x, y-1)){
-            nachbarn.add(gitter[x][y-1]);
-        }
-        return nachbarn;
-    }
+
+  
 	/**
 	 * Auswertung der Runden am Ende der Simulation
 	 * @param runden ArrayList mit Runden
@@ -111,9 +96,7 @@ public class Gitter {
     	return randomNum;
     }
     
-    public boolean inGitter(int x, int y){
-        return x < breite  && x >= 0 && y < hoehe  && y >= 0;
-    }
+ 
 
     /**
      * Methode, die den Prozentwert an Menschen berechnet, die eine gewisse Meinung haben
@@ -149,8 +132,10 @@ public class Gitter {
         	System.out.println(menschen.size());
             int pX = tmp.getX();
             int pY = tmp.getY();
-            spielfeld[pX][pY].addPersonen(tmp);
-            System.out.println(spielfeld[pX][pY].getPersonen().size());
+
+            spielfeld[pX][pY].getPersonen().add(tmp);
+            //System.out.println(spielfeld[pX][pY].getPersonen().size());
+
         }
     }
     
@@ -167,9 +152,7 @@ public class Gitter {
      */
     private void personenBewegen(ArrayList<Mensch> personen) {
         for (Mensch tmp : personen) {
-        	if(inGitter(tmp.getX(),tmp.getY())) {
-        		tmp.move(zufaelligeBewegung());
-        	}
+          		tmp.move(zufaelligeBewegung(), this.gitter);
         }
     }
     
